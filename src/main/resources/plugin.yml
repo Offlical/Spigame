@@ -1,0 +1,4 @@
+name: Spigame
+main: dev.offlical.spigame.GameMain
+api-version: 1.16
+version: 1.0
