@@ -1,11 +1,13 @@
-package dev.offlical.spigame;
+package dev.offlical.spigame.render;
 
+import dev.offlical.spigame.gameobjects.GameObject;
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapCanvas;
 import org.bukkit.map.MapPalette;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameRenderer extends MapRenderer {
@@ -23,7 +25,7 @@ public class GameRenderer extends MapRenderer {
     }
 
     public GameRenderer() {
-
+        this.objects = new ArrayList<>();
     }
 
     @Override
@@ -34,6 +36,13 @@ public class GameRenderer extends MapRenderer {
                 canvas.setPixel(x, y, MapPalette.LIGHT_GRAY);
             }
         }
+        for(GameObject o: this.objects) {
+            o.draw();
+        }
+    }
+
+    public List<GameObject> getObjects() {
+        return objects;
     }
 
     public MapCanvas getCanvas() {
