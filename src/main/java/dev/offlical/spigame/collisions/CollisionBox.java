@@ -86,13 +86,18 @@ public class CollisionBox {
         this.minX = -width;
     }
 
+    /*
+
+    Updates the collission box relative to a point being its center
+
+     */
     public void relateToLocation(MapLocation location) {
 
         this.maxX = location.getX() + width;
         this.maxY = location.getY() + height;
 
         this.minX = location.getX() - width;
-        this.minY = location.getY() - minY;
+        this.minY = location.getY() - height;
 
     }
 

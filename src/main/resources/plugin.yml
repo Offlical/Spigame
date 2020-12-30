@@ -1,4 +1,5 @@
 name: Spigame
-main: dev.offlical.spigame.GameMain
+main: dev.offlical.spigame.Spigame
 api-version: 1.16
 version: 1.0
+depend: [ProtocolLib]

@@ -1,68 +1,74 @@
 package dev.offlical.spigame.gameobjects;
 
+import dev.offlical.spigame.GameInstance;
+import dev.offlical.spigame.Spigame;
+import dev.offlical.spigame.api.SpigameAPI;
 import dev.offlical.spigame.collisions.CollisionBox;
-import dev.offlical.spigame.render.GameRenderer;
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.Bukkit;
 import org.bukkit.map.MapPalette;
 
+import java.util.function.Consumer;
 
-@Getter
-@Setter
+
 public class GameObject {
 
 
-    public MapLocation location;
-    public GameRenderer render;
-    private CollisionBox collisionBox;
-    private String name;
+    @Getter @Setter   public MapLocation location;
+    @Getter @Setter  private CollisionBox collisionBox;
+    @Getter @Setter private String name;
 
-    public GameObject(int x, int y, GameRenderer render,CollisionBox collisionBox) {
+    @Setter private GameInstance parentInstance;
 
-        this.location = new MapLocation(x,y);
-        this.render = render;
-        this.collisionBox = collisionBox;
-    }
+    @Setter @Getter private int id;
 
     public GameObject(int x, int y,String name) {
         this.location = new MapLocation(x,y);
         this.name = name;
+        this.collisionBox = new CollisionBox(1);
+
+        this.id = SpigameAPI.gameObjectID;
+        SpigameAPI.gameObjectID++;
     }
 
 
+    /*
+
+    Move object to a certain coordinate on the canvas
+
+     */
     public void move(int x, int y) {
         this.location.setX(x);
         this.location.setY(y);
         if(x > 128) this.location.setX(1);
         if(y > 128) this.location.setY(1);
-        render.getObjects().forEach(object -> {
-            if(object.collidedWithObject(this) && object != this) onCollision(object);
-            if(object.getCollisionBox().isColliding(this.collisionBox) && object != this) {
-                System.out.println("box collision");
-                onCollision(object);
+        updateCollisionBox();
+        parentInstance.getObjects().forEach(object -> {
+            if(object != this && this.collidedWithObject(object)) {
+                this.onCollision(object);
             }
         });
-        updateCollisionBox();
-        draw();
+        parentInstance.render(this);
     }
 
-
-    public void draw() {
+    public byte[][] draw(byte[][] canvas) {
         MapLocation location = this.location;
         for(int x = 0; x < 3; x++) {
             for(int y = 0; y < 3; y++) {
-                render.getCanvas().setPixel((location.getX() + x),location.getY() + y,MapPalette.RED);
+                canvas[location.getY() + y][location.getX() + x] = MapPalette.BROWN;
             }
         }
+        Spigame.getSpigameLogger().info("[RENDER] " + this.getName() + " rendered at " + this.getX() + "," + this.getY());
+        return canvas;
     }
+
 
     public boolean collidedWithObject(GameObject object) {
         return collisionBox.didCollide(object.getLocation());
     }
 
     public void onCollision(GameObject object) {
-        Bukkit.getLogger().info("OBJECT (" + this.getName() + ") Collided with object: " + object.getName() + " at (x: " + this.getX() + " y: " + this.getY() + ")");
+        Spigame.getSpigameLogger().info("OBJECT (" + this.getName() + " ID: " + this.getId() + ") Collided with object: " + object.getName() + " at (x: " + this.getX() + " y: " + this.getY() + ")");
     }
 
     public int getX() {
@@ -87,14 +93,9 @@ public class GameObject {
 
         this.collisionBox.setMaxY(getY() + collisionBox.getHeight());
         this.collisionBox.setMinY(getY() - collisionBox.getHeight());
-
+        Spigame.getSpigameLogger().info("[COLLISSION] Updated Collision box - " + this.getName() + " ID: " + this.getId());
     }
 
-    public GameRenderer getRender() {
-        return render;
-    }
 
-    public void setRender(GameRenderer render) {
-        this.render = render;
-    }
+
 }

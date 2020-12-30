@@ -20,6 +20,14 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/nexus/repository/public/</url>
+        </repository>
+        <!-- And so on -->
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -33,6 +41,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.16</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>4.5.1</version>
         </dependency>
     </dependencies>
 
