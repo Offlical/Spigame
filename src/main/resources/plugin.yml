@@ -1,5 +1,10 @@
 name: Spigame
-main: dev.offlical.spigame.Spigame
+main: me.danielml.spigame.Spigame
 api-version: 1.16
 version: 1.0
 depend: [ProtocolLib]
+
+commands:
+  testspigame:
+    description: Gives a test spigame map
+    usage: /<command>

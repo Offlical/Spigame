@@ -1,7 +1,7 @@
-package dev.offlical.spigame.collisions;
+package me.danielml.spigame.modifiers.collisions;
 
-import dev.offlical.spigame.gameobjects.GameObject;
-import dev.offlical.spigame.gameobjects.MapLocation;
+import me.danielml.spigame.gameobjects.GameObject;
+import me.danielml.spigame.gameobjects.MapTransform;
 import lombok.Getter;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -17,7 +17,7 @@ public class CollisionEvent extends Event {
     private CollisionBox collidedBox;
     private CollisionBox collidingBox;
 
-    private MapLocation collisionPoint;
+    private MapTransform collisionPoint;
 
 
 

@@ -1,6 +1,5 @@
-package dev.offlical.spigame.render;
+package me.danielml.spigame.render;
 
-import dev.offlical.spigame.api.SpigameAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.map.MapRenderer;
