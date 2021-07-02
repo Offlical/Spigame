@@ -3,7 +3,6 @@ package me.danielml.spigame.render;
 
 public class GameCanvas {
 
-
                        //y,x
     private final byte[][] canvas;
 

@@ -2,10 +2,9 @@ package me.danielml.spigame.gameobjects;
 
 import me.danielml.spigame.api.SpigameAPI;
 import me.danielml.spigame.modifiers.Modifier;
-import me.danielml.spigame.modifiers.collisions.CollisionBox;
 import me.danielml.spigame.render.GameCanvas;
-import me.danielml.spigame.render.ObjectRenderer;
-import me.danielml.spigame.render.Texture;
+import me.danielml.spigame.render.texture.ObjectRenderer;
+import me.danielml.spigame.render.texture.Texture;
 
 import java.util.ArrayList;
 

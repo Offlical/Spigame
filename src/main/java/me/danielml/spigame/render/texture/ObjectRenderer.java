@@ -1,7 +1,8 @@
-package me.danielml.spigame.render;
+package me.danielml.spigame.render.texture;
 
 import me.danielml.spigame.gameobjects.GameObject;
-import me.danielml.spigame.gameobjects.MapTransform;
+import me.danielml.spigame.render.GameCanvas;
+import me.danielml.spigame.render.texture.Texture;
 
 
 public class ObjectRenderer {

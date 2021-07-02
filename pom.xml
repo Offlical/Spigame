@@ -48,7 +48,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>me.offlical.Connect4Bot</mainClass>
+                            <mainClass>me.danielml.spigame.Spigame</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

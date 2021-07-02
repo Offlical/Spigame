@@ -1,6 +1,7 @@
-package me.danielml.spigame.render;
+package me.danielml.spigame.render.texture;
 
 import me.danielml.spigame.gameobjects.MapTransform;
+import me.danielml.spigame.render.GameCanvas;
 import org.bukkit.map.MapPalette;
 
 public class Texture {

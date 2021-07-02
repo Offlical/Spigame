@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public class SpigameAPI {
 
-    public static int MAP_ID = 1;
+    public static int MAP_ID = 4;
     private static int gameObjectID = 0;
 
     private static HashMap<UUID, GameInstance> playerInstances;

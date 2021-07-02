@@ -4,7 +4,7 @@ import me.danielml.spigame.GameInstance;
 import me.danielml.spigame.Spigame;
 import me.danielml.spigame.gameobjects.GameObject;
 import me.danielml.spigame.gameobjects.MapTransform;
-import me.danielml.spigame.render.Texture;
+import me.danielml.spigame.render.texture.Texture;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
